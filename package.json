@@ -1,0 +1,16 @@
+{
+  "name": "testz",
+  "version": "0.0.1",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "express": "4.13.3",
+    "mongoose": "^4.4.17",
+    "multer": "1.1.0",
+    "sharp": "^0.14.1"
+  },
+  "devDependencies": {
+    "should": "~7.1.0",
+    "mocha": "~2.3.3",
+    "supertest": "~1.1.0"
+  }
+}

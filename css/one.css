@@ -1,0 +1,64 @@
+.column_image {
+    float: left;
+    width: 25%;
+}
+
+.column_textos {
+    float: left;
+    width: 75%;
+}
+
+.colunm_dos{
+  float: left;
+  /* margin-left: 2.5%; */
+  /* margin-right: 2.5%; */
+  width: 45%;
+}
+
+.colunm_tres{
+  float: left;
+  /* margin-left: 2.5%; */
+  /* margin-right: 2.5%; */
+  width: 30%;
+}
+
+.imigminable{
+  min-width: 300px;
+
+}
+.imminible{
+  /* min-width: 440px; */
+  padding-left:25px;
+  padding-bottom: 25px;
+}
+
+.cardstyle{
+  min-width: 450px;
+margin-top:100px; margin-left: 10%; margin-right:10%; padding:25px; padding-top:15px; width: initial;
+
+}
+
+.cardstyle_l{
+  min-width: 450px;
+  margin-left: 10%;
+  margin-right:10px;
+  width: initial;
+  margin-bottom:10px;
+
+
+}
+
+.cardstyle_r{
+  min-width: 450px;
+
+  margin-bottom:10px; margin-top:0px; margin-left: 10%; margin-right:10%; width: initial;
+
+
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
