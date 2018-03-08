@@ -9,11 +9,10 @@ var colors = require('colors');
 var debug = true;
 
 
-var mongoose = require('mongoose');
-require('./models/db');
+// var mongoose = require('mongoose');
+// require('./models/db');
 
-// var Loc = mongoose.model('Location');
-var Img = mongoose.model('Imagery')
+// var Img = mongoose.model('Imagery')
 
 
 
@@ -39,17 +38,17 @@ app.post('/api/photo', upload.single('userPhoto'), function (req, res) {
       // containing a scaled and cropped version of input.jpg
     });
 
-  Img.create(
-    {
-    name: req.body.name,
-    sensor: req.body.sensor,
-    date: req.body.date,
-    pack: req.body.pack,
-    url : stripPublic(req.file.path),
-    thumb: '/uploads'+'/efarrari_thumb'+ '-' +req.file.filename,
-    location: req.body.location
-    }
-    , null);
+  // Img.create(
+  //   {
+  //   name: req.body.name,
+  //   sensor: req.body.sensor,
+  //   date: req.body.date,
+  //   pack: req.body.pack,
+  //   url : stripPublic(req.file.path),
+  //   thumb: '/uploads'+'/efarrari_thumb'+ '-' +req.file.filename,
+  //   location: req.body.location
+  //   }
+  //   , null);
 
 
   uploadia(req,res,function(err) {
@@ -108,8 +107,8 @@ app.get('/efarrari/source',function(req,res){
 
   var locations = [];
 
-Img.find(null, null, null, function (err, docs) {
-  console.log(docs);
+// Img.find(null, null, null, function (err, docs) {
+//   console.log(docs);
 
 // locations.push(docs);
   docs.forEach(function(doc) {
