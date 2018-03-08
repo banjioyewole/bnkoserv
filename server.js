@@ -181,9 +181,11 @@ var sendJsonResponse = function(res, status, content) {
 //   }
 // });
 
-
-app.listen(80,function(){
-    console.log("Working on port 3000");
+app.listen(config.port, config.host, function () {
+  console.long("Working on port " + config.port)
+}
+app.listen(process.env.PORT,function(){
+    console.log("Working on port PORT");
 });
 
 function getExtension(filename) {
