@@ -109,24 +109,24 @@ app.get('/efarrari/source',function(req,res){
 
 // Img.find(null, null, null, function (err, docs) {
 //   console.log(docs);
-
-// locations.push(docs);
-  docs.forEach(function(doc) {
-        //  locations.push(doc)
-        locations.push(
-          doc
-      // distance: theEarth.getDistanceFromRads(doc.dis),
-      // name: doc.name
-      // address: doc.obj.address,
-      // rating: doc.obj.rating,
-      // facilities: doc.obj.facilities,
-      // _id: doc.obj._id
-
-);
-})
-sendJsonResponse(res, 200, locations);
-  //__dirname : It will resolve to your project folder.
-});
+//
+// // locations.push(docs);
+//   docs.forEach(function(doc) {
+//         //  locations.push(doc)
+//         locations.push(
+//           doc
+//       // distance: theEarth.getDistanceFromRads(doc.dis),
+//       // name: doc.name
+//       // address: doc.obj.address,
+//       // rating: doc.obj.rating,
+//       // facilities: doc.obj.facilities,
+//       // _id: doc.obj._id
+//
+// );
+// })
+// sendJsonResponse(res, 200, locations);
+//   //__dirname : It will resolve to your project folder.
+// });
 
 });
 app.get('/efarrari/upload',function(req,res){
