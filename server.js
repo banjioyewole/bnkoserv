@@ -181,9 +181,9 @@ var sendJsonResponse = function(res, status, content) {
 //   }
 // });
 
-app.listen(config.port, config.host, function () {
-  console.long("Working on port " + config.port)
-}
+// app.listen(config.port, config.host, function () {
+//   console.long("Working on port " + config.port)
+// }
 app.listen(process.env.PORT,function(){
     console.log("Working on port PORT");
 });
