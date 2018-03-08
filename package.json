@@ -6,7 +6,9 @@
     "express": "4.13.3",
     "mongoose": "^4.4.17",
     "multer": "1.1.0",
-    "sharp": "^0.20.0"
+    "sharp": "^0.20.0",
+    "serve-favicon": "*",
+    "morgan": "*"
   },
   "devDependencies": {
     "should": "~7.1.0",
