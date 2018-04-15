@@ -3,7 +3,7 @@ var app     = express();
 var path    = require("path");
 var multer  =   require('multer');
 var favicon = require('serve-favicon');
-var sharp = require('sharp');
+// var sharp = require('sharp');
 var colors = require('colors');
 
 var debug = true;
@@ -52,12 +52,12 @@ app.get('/api/ip_disco', function (req, res){
 
 app.post('/api/photo', upload.single('userPhoto'), function (req, res) {
 
-  sharp(req.file.path)
-    .resize(512, 288)
-    .toFile('./public/uploads'+'/efarrari_thumb'+ '-' +req.file.filename , function(err) {
-      // output.jpg is a 300 pixels wide and 200 pixels high image
-      // containing a scaled and cropped version of input.jpg
-    });
+  // sharp(req.file.path)
+  //   .resize(512, 288)
+  //   .toFile('./public/uploads'+'/efarrari_thumb'+ '-' +req.file.filename , function(err) {
+  //     // output.jpg is a 300 pixels wide and 200 pixels high image
+  //     // containing a scaled and cropped version of input.jpg
+  //   });
 
   // Img.create(
   //   {
