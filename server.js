@@ -9,11 +9,11 @@ var colors = require('colors');
 var debug = true;
 
 
-// var mongoose = require('mongoose');
-// require('./models/db');
+var mongoose = require('mongoose');
+require('./models/db');
 
-// var Img = mongoose.model('Imagery')
-
+var Img = mongoose.model('Imagery')
+var ipSchema = mongoose.model('IP_Scheme')
 
 
 var storage =   multer.diskStorage({
@@ -28,6 +28,27 @@ var storage =   multer.diskStorage({
 
 var upload = multer({ storage : storage});
 var uploadia = upload.single('userPhoto');
+
+
+
+app.get('/api/ip_disco', function (req, res){
+  //
+  //
+  // var whois = req.param('whois');
+  // var ip_address = req.param('ip_address');
+
+  ipSchema.create({
+    whois : req.param('whois'),
+    ip_address : req.param('ip_address')
+
+  }, null);
+
+  console.log("Recieved IP from " + req.param('whois'))
+  sendJsonResponse(res, 200, "OK TNX :D\n");
+
+
+
+});
 
 app.post('/api/photo', upload.single('userPhoto'), function (req, res) {
 
@@ -101,32 +122,51 @@ app.get('/efarrari',function(req,res){
   });
 
 
+
+app.get('/ip_disco', function(req, res){
+
+var ip_addresses = [];
+
+ipSchema.find(null, null, null, function (err, docs) {
+  console.log(docs);
+
+  docs.forEach(function(doc) {
+        ip_addresses.push(doc);
+})
+
+sendJsonResponse(res, 200, ip_addresses);
+  //__dirname : It will resolve to your project folder.
+
+  });
+
+});
+
 app.get('/efarrari/source',function(req,res){
   console.log(colors.white.bgCyan(humanReadableDate()));
   // res.sendFile(path.join(__dirname+'/views/efarrari.html'));
 
   var locations = [];
 
-// Img.find(null, null, null, function (err, docs) {
-//   console.log(docs);
-//
-// // locations.push(docs);
-//   docs.forEach(function(doc) {
-//         //  locations.push(doc)
-//         locations.push(
-//           doc
-//       // distance: theEarth.getDistanceFromRads(doc.dis),
-//       // name: doc.name
-//       // address: doc.obj.address,
-//       // rating: doc.obj.rating,
-//       // facilities: doc.obj.facilities,
-//       // _id: doc.obj._id
-//
-// );
-// })
-// sendJsonResponse(res, 200, locations);
-//   //__dirname : It will resolve to your project folder.
-// });
+Img.find(null, null, null, function (err, docs) {
+  console.log(docs);
+
+// locations.push(docs);
+  docs.forEach(function(doc) {
+        //  locations.push(doc)
+        locations.push(
+          doc
+      // distance: theEarth.getDistanceFromRads(doc.dis),
+      // name: doc.name
+      // address: doc.obj.address,
+      // rating: doc.obj.rating,
+      // facilities: doc.obj.facilities,
+      // _id: doc.obj._id
+
+);
+})
+sendJsonResponse(res, 200, locations);
+  //__dirname : It will resolve to your project folder.
+});
 
 });
 app.get('/efarrari/upload',function(req,res){
@@ -157,35 +197,13 @@ var sendJsonResponse = function(res, status, content) {
   res.json(content);
 };
 
-// Loc.create({
-//   name: req.body.name,
-//   address: req.body.address,
-//   facilities: req.body.facilities.split(","),
-//   coords: [parseFloat(req.body.lng), parseFloat(req.body.lat)],
-//   openingTimes: [{
-//     days: req.body.days1,
-// opening: req.body.opening1,
-// closing: req.body.closing1,
-// closed: req.body.closed1,
-// }, {
-// days: req.body.days2,
-// opening: req.body.opening2,
-// closing: req.body.closing2,
-//     closed: req.body.closed2,
-//   }]
-// }, function(err, location) {
-//   if (err) {
-//     sendJsonResponse(res, 400, err);
-//   } else {
-//     sendJsonResponse(res, 201, location);
-//   }
-// });
+
 
 // app.listen(config.port, config.host, function () {
 //   console.long("Working on port " + config.port)
 // }
 app.listen(process.env.PORT,function(){
-    console.log("Working on port PORT");
+    console.log("Working on port " + process.env.PORT);
 });
 
 function getExtension(filename) {

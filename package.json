@@ -5,17 +5,17 @@
     "colors": "^1.1.2",
     "express": "4.13.3",
     "mongoose": "^4.4.17",
+    "morgan": "*",
     "multer": "1.1.0",
-    "sharp": "^0.20.0",
     "serve-favicon": "*",
-    "morgan": "*"
+    "sharp": "^0.20.1"
   },
   "devDependencies": {
     "should": "~7.1.0",
     "mocha": "~2.3.3",
     "supertest": "~1.1.0"
   },
-"engines": {
+  "engines": {
     "node": "6.1.0",
     "npm": "3.8.6"
   }

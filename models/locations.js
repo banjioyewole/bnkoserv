@@ -6,10 +6,21 @@ var mongoose = require( 'mongoose' );
 
 //mongoose will not allow a post request for a review to continue unless all
 //required elements have been supplied
+var ipSchema = new mongoose.Schema({
+  whois: {type: String, required: false},
+  ip_address: {type: String, required: true},
+  createdOn: {type: Date, "default": Date.now},
+});
+
+
+
+
+
 var reviewSchema = new mongoose.Schema({
 author: {type: String, required: true},
   rating: {type: Number, required: true, min: 0, max: 5},
 reviewText: {type: String, required: true},
+//auto-added
   createdOn: {type: Date, "default": Date.now},
   id: String
 });
@@ -47,5 +58,7 @@ var imagerySchema = new mongoose.Schema({
 
 
         mongoose.model('Imagery', imagerySchema);
+        mongoose.model('IP_Scheme', ipSchema);
+
         mongoose.model('Location', locationSchema);
         mongoose.model('Review', reviewSchema);
