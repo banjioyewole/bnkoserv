@@ -44,7 +44,7 @@ app.get('/api/ip_disco', function (req, res){
   }, null);
 
   console.log("Recieved IP from " + req.param('whois'))
-  sendJsonResponse(res, 200, "OK TNX :D\n");
+  sendJsonResponse(res, 200, 'OK TNX :D');
 
 
 
@@ -123,6 +123,13 @@ app.get('/efarrari',function(req,res){
 
 
 
+
+app.get('/material_flashlight',function(req,res){
+  res.sendFile(path.join(__dirname+'/views/material_flashlight.html'));
+  //__dirname : It will resolve to your project folder.
+});
+
+
 app.get('/ip_disco', function(req, res){
 
 var ip_addresses = [];
@@ -153,8 +160,8 @@ Img.find(null, null, null, function (err, docs) {
 // locations.push(docs);
   docs.forEach(function(doc) {
         //  locations.push(doc)
-        locations.push(
-          doc
+        locations.push(doc
+          // {doc.obj.ip_address, doc.obj.whois}
       // distance: theEarth.getDistanceFromRads(doc.dis),
       // name: doc.name
       // address: doc.obj.address,
@@ -163,6 +170,7 @@ Img.find(null, null, null, function (err, docs) {
       // _id: doc.obj._id
 
 );
+locations.push("Most Recent at Bottom!")
 })
 sendJsonResponse(res, 200, locations);
   //__dirname : It will resolve to your project folder.
