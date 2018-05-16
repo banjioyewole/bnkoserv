@@ -130,6 +130,12 @@ app.get('/material_flashlight',function(req,res){
 });
 
 
+app.get('/projects/capstone/video',function(req,res){
+  res.sendFile(path.join(__dirname+'/views/capstone_videos.html'));
+  //__dirname : It will resolve to your project folder.
+});
+
+
 app.get('/ip_disco', function(req, res){
 
 var ip_addresses = [];
