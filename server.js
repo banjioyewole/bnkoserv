@@ -122,7 +122,10 @@ app.get('/efarrari',function(req,res){
   });
 
 
-
+  app.get('/material_flashlight',function(req,res){
+    res.sendFile(path.join(__dirname+'/views/material_flashlight.html'));
+    //__dirname : It will resolve to your project folder.
+  });
 
 app.get('/material_flashlight/privacy_policy',function(req,res){
   res.sendFile(path.join(__dirname+'/views/material_privacy.html'));
