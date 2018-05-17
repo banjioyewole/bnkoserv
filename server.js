@@ -124,8 +124,8 @@ app.get('/efarrari',function(req,res){
 
 
 
-app.get('/material_flashlight',function(req,res){
-  res.sendFile(path.join(__dirname+'/views/material_flashlight.html'));
+app.get('/material_flashlight/privacy_policy',function(req,res){
+  res.sendFile(path.join(__dirname+'/views/material_privacy.html'));
   //__dirname : It will resolve to your project folder.
 });
 
@@ -134,6 +134,9 @@ app.get('/projects/capstone/video',function(req,res){
   res.sendFile(path.join(__dirname+'/views/capstone_videos.html'));
   //__dirname : It will resolve to your project folder.
 });
+
+
+
 
 
 app.get('/ip_disco', function(req, res){
