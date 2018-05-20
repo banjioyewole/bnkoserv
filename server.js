@@ -3,7 +3,9 @@ var app     = express();
 var path    = require("path");
 var multer  =   require('multer');
 var favicon = require('serve-favicon');
-// var sharp = require('sharp');
+var sharp = require('sharp');
+// var resizeImage = require('resize-image');
+
 var colors = require('colors');
 
 var debug = true;
@@ -52,24 +54,28 @@ app.get('/api/ip_disco', function (req, res){
 
 app.post('/api/photo', upload.single('userPhoto'), function (req, res) {
 
-  // sharp(req.file.path)
-  //   .resize(512, 288)
-  //   .toFile('./public/uploads'+'/efarrari_thumb'+ '-' +req.file.filename , function(err) {
-  //     // output.jpg is a 300 pixels wide and 200 pixels high image
-  //     // containing a scaled and cropped version of input.jpg
-  //   });
 
-  // Img.create(
-  //   {
-  //   name: req.body.name,
-  //   sensor: req.body.sensor,
-  //   date: req.body.date,
-  //   pack: req.body.pack,
-  //   url : stripPublic(req.file.path),
-  //   thumb: '/uploads'+'/efarrari_thumb'+ '-' +req.file.filename,
-  //   location: req.body.location
-  //   }
-  //   , null);
+
+
+
+  sharp(req.file.path)
+    .resize(512)
+    .toFile('./public/uploads'+'/efarrari_thumb'+ '-' +req.file.filename , function(err) {
+      // output.jpg is a 300 pixels wide and 200 pixels high image
+      // containing a scaled and cropped version of input.jpg
+    });
+
+  Img.create(
+    {
+    name: req.body.name,
+    sensor: req.body.sensor,
+    date: req.body.date,
+    pack: req.body.pack,
+    url : stripPublic(req.file.path),
+    thumb: '/uploads'+'/efarrari_thumb'+ '-' +req.file.filename,
+    location: req.body.location
+    }
+    , null);
 
 
   uploadia(req,res,function(err) {
@@ -182,7 +188,7 @@ Img.find(null, null, null, function (err, docs) {
       // _id: doc.obj._id
 
 );
-locations.push("Most Recent at Bottom!")
+// locations.push("Most Recent at Bottom!")
 })
 sendJsonResponse(res, 200, locations);
   //__dirname : It will resolve to your project folder.
