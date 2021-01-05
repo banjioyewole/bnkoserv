@@ -178,6 +178,11 @@ app.get('/efarrari',function(req,res){
     //__dirname : It will resolve to your project folder.
   });
 
+  app.get('/lumiboost/privacy_policy',function(req,res){
+    res.sendFile(path.join(__dirname+'/views/lumiboost_privacy_policy.html'));
+    //__dirname : It will resolve to your project folder.
+  });
+
 app.get('/material_flashlight/privacy_policy',function(req,res){
   res.sendFile(path.join(__dirname+'/views/material_privacy.html'));
   //__dirname : It will resolve to your project folder.
